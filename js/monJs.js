@@ -1,7 +1,29 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$(function(){
+    
+    $('#vuesConnexion #btnconnexion').bind("click", function(e) {
+            e.preventDefault();
+            var mdp = $("#vuesConnexion #mdp").val(); 
+            var login = $("#vuesConnexion #login").val();
+            $.post("ajax/traiterconnexion.php",{
+                        "mdp" : mdp,        
+                        "login" : login },
+                        foncRetourConnexion,"json" );
+    });
 
-
+    
+     function foncRetourConnexion(data){
+            if(data != null){
+                $.mobile.changePage("#vuesAccueil");
+             }
+             else{
+                $("#vuesConnexion #message").css({color:'red'});
+                $("#vuesConnexion #message").html("erreur de login et/ou mdp");
+             }
+    }
+    
+    
+    
+    
+    
+    
+});
