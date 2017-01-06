@@ -45,15 +45,16 @@ class PdoMdl{
             return $lesLignes;
     }
     
-//_________________________________________________Horaire Reserv Salle
-    
-    public function getHoraireSalle($id){
-        $req = "select start_time, end_time, end_date, room_id, name, description From mrbs_repeat Where room_id = :id"; 
-        $stm = self::$monPdo->query($req);
-        $stm->bindParam(':id', $id);
-        $lesLignes = $stm->fetchAll(PDO::FETCH_OBJ);            
-        return $lesLignes;  
+    public function getLesReservationsDuJour($idSalle){
+        $ajd = date("Y-m-d");
+        $dateAjdJulienne = strtotime($ajd);
+        $dateDemainJulienne = $dateAjdJulienne+86400;
+        $req = "select * from mrbs_room INNER JOIN mrbs_entry ON mrbs_room.id = mrbs_entry.room_id WHERE mrbs_room.id = :idSalle AND start_time BETWEEN '$dateAjdJulienne' AND '$dateDemainJulienne'"; 
+        $stm = self::$monPdo->prepare($req);
+        $stm->bindParam(':idSalle', $idSalle);
+        $stm->execute();
+        $lesLignes = $stm->fetchAll(PDO::FETCH_OBJ);
+        return $lesLignes;
     }
-    
 }
 ?>
