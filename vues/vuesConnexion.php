@@ -4,7 +4,7 @@
     ?>
         <div data-role="content" id="divconnexion"> 
                 <?php 
-            
+                    
                 ?>
             <div class="ui-field-contain">
                 <label for="login">Login</label>

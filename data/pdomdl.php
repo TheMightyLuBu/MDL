@@ -28,7 +28,7 @@ class PdoMdl{
 //_________________________________________________Connexion Users
         
     public function getConnexion($login, $mdp){
-            $req = "select id, level, name, from mrbs_users where name = :login and mdp = :mdp";
+            $req = "select id, level, name from mrbs_users where name = :login and password = :mdp";
             $stm = self::$monPdo->prepare($req);
             $stm->bindParam(':login', $login);
             $stm->bindParam(':mdp', $mdp);

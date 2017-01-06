@@ -12,7 +12,7 @@ $(function(){
 
     
      function foncRetourConnexion(data){
-            if(data != null){
+            if(data !== false){
                 $.mobile.changePage("#vuesAccueil");
              }
              else{
