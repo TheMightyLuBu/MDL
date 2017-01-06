@@ -37,4 +37,22 @@ $(function(){
         $( this ).listview( "refresh" );
     });
     }  
+    
+    $('#vuesAccueil').on("click", "li", function(e) {
+            e.preventDefault();
+            var idSalle = $(this).attr("id");
+            window.idSalle = idSalle;
+            $.post("ajax/traiterChoixSalle.php",{
+                        "idSalle" : idSalle },
+                        foncRetourChoixSalle,"json" );
+    });
+    
+    function foncRetourChoixSalle(data){
+         $.mobile.changePage("#vuesJour");
+         /*var motif = data['motif'];
+         var bilan = data['bilan'];
+         $("#pagerapportamodifier #nomMedecin").html("Médecin : "+window.medecin);
+         $("#pagerapportamodifier #motif").text(motif);
+         $("#pagerapportamodifier #bilan").text(bilan);*/
+    }
 });

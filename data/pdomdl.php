@@ -43,5 +43,17 @@ class PdoMdl{
             $lesLignes = $stm->fetchAll(PDO::FETCH_OBJ);            
             return $lesLignes;
     }
+    
+    public function getLesReservationsDuJour($idSalle){
+        $ajd = date("Y-m-d");
+        $dateAjdJulienne = strtotime($ajd);
+        $dateDemainJulienne = $dateAjdJulienne+86400;
+        $req = "select * from mrbs_room INNER JOIN mrbs_entry ON mrbs_room.id = mrbs_entry.room_id WHERE mrbs_room.id = :idSalle AND start_time BETWEEN '$dateAjdJulienne' AND '$dateDemainJulienne'"; 
+        $stm = self::$monPdo->prepare($req);
+        $stm->bindParam(':idSalle', $idSalle);
+        $stm->execute();
+        $lesLignes = $stm->fetchAll(PDO::FETCH_OBJ);
+        return $lesLignes;
+    }
 }
 ?>
