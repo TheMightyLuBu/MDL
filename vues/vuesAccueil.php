@@ -1,6 +1,6 @@
 <div data-role="page" id="vuesAccueil">
     <?php 
-    include "vues/entetepage.html"
+    include "vues/entetepageconnect.php"
     ?>
         <div data-role="content"> 
             <div class="ui-field-contain">
