@@ -1,5 +1,4 @@
 <?php
-
 //_____________________________________________________Connexion BDD
 class PdoMdl{
     
@@ -37,11 +36,24 @@ class PdoMdl{
             return $laLigne;                   
 	}
         
+//_________________________________________________Chercher les Salles
+        
     public function getSalles(){
             $req = "select * from mrbs_room";
             $stm = self::$monPdo->query($req);
             $lesLignes = $stm->fetchAll(PDO::FETCH_OBJ);            
             return $lesLignes;
     }
+    
+//_________________________________________________Horaire Reserv Salle
+    
+    public function getHoraireSalle($id){
+        $req = "select start_time, end_time, end_date, room_id, name, description From mrbs_repeat Where room_id = :id"; 
+        $stm = self::$monPdo->query($req);
+        $stm->bindParam(':id', $id);
+        $lesLignes = $stm->fetchAll(PDO::FETCH_OBJ);            
+        return $lesLignes;  
+    }
+    
 }
 ?>

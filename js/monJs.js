@@ -38,15 +38,27 @@ $(function(){
     });
     }  
     
+//_____________________________________________________VuesJour Calendar
+
     $("#vuesJour").load("ajax/traiterchoixsalle.php", function(e){
+        e.preventDefault();
+        var id = $("#vuesAccueil #idSalle").val(); 
+        $.post("",{
+            
+            
+        }, foncRetourHoraire,"json" );
+        
+        });  
+       
+        function foncRetourHoraire(data){        
         var html = "";
         for (var i = 0; i !== 26; i++) 
         {
         html = html + "<tr><td> Horaire </td> <td> Description </td></tr>";   
         }
-        alert(html); 
+        //alert(html); 
         $("#vuesJour #tableauJour").html(html); 
        
-        
-    });
+        }
+   
 });
