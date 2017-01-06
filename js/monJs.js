@@ -19,5 +19,21 @@ $(function(){
                 $("#vuesConnexion #message").css({color:'red'});
                 $("#vuesConnexion #message").html("erreur de login et/ou mdp");
              }
-    }   
+    }  
+    
+    $('#vuesJour #tableJour' ).load(function(e){
+        e.preventDefault();     
+        var html = ""; 
+        var h = 26;
+        for(var i = 0; i !== h; i++)
+        {
+             html = html + "<tr><td> 9h</td><td>bonjour</td></tr>";
+             
+        }
+        
+        
+        
+    });
+    
+    
 });
