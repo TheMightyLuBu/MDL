@@ -36,5 +36,12 @@ class PdoMdl{
             $laLigne = $stm->fetch();            
             return $laLigne;                   
 	}
+        
+    public function getSalles(){
+            $req = "select * from mrbs_room";
+            $stm = self::$monPdo->query($req);
+            $lesLignes = $stm->fetchAll(PDO::FETCH_OBJ);            
+            return $lesLignes;
+    }
 }
 ?>
