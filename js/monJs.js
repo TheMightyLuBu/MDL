@@ -13,17 +13,11 @@ $(function(){
     
      function foncRetourConnexion(data){
             if(data !== false){
-                $.mobile.changePage("#vuesAccueil");
+                $.mobile.changePage("#vuesSemaine"); //a changer
              }
              else{
                 $("#vuesConnexion #message").css({color:'red'});
                 $("#vuesConnexion #message").html("erreur de login et/ou mdp");
              }
-    }
-    
-    
-    
-    
-    
-    
+    }   
 });
