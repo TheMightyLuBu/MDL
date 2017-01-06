@@ -55,4 +55,15 @@ $(function(){
          $("#pagerapportamodifier #motif").text(motif);
          $("#pagerapportamodifier #bilan").text(bilan);*/
     }
+    $("#vuesJour").load("ajax/traiterchoixsalle.php", function(e){
+        var html = "";
+        for (var i = 0; i !== 26; i++) 
+        {
+        html = html + "<tr><td> Horaire </td> <td> Description </td></tr>";   
+        }
+        alert(html); 
+        $("#vuesJour #tableauJour").html(html); 
+       
+        
+    });
 });

@@ -1,15 +1,18 @@
 <div data-role="page" id="vuesJour">
     <?php 
-    include "vues/entetepageconnect.php"
+    include "vues/entetepageconnect.php";
     ?>             
     <div data-role = "content">
-    <table>
-        <tr>
-            <td>Heure</td>
-            <td id="nomSalle"></td>
-        </tr>
-        <div id="tableJour"></div>
-        
-    </table>
+    <table class="table-stripe" id="tab" data-role="table">
+                 <thead>
+                   <tr >
+                     <th>Heure</th>
+                     <th>Description</th>
+                   </tr>
+                 </thead>
+                 <tbody id="tableauJour">
+             
+                 </tbody>
+            </table>
     </div>
 </div>
